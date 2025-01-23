@@ -14,8 +14,13 @@ Summaries of solved LeetCode Problems
         Increase the number of concurrent meetings
     Otherwise, a meeting will end before the next one starts:
         Decrease the number of concurrent meetings
+
 -#56: Merge Intervals
-    Add summary on 1/23/25
+    Sort intervals by start time
+    Overlapping intervals will always be adjacent:
+        if the current interval overlaps with the next interval:
+            merge the intervals into the next Interval
+        otherwise add current interval to result list
     
 -#57: Insert Interval
     Create an empty list to return the result of insertion
@@ -28,3 +33,16 @@ Summaries of solved LeetCode Problems
         Insert the current interval into the return list
     * Case 3: newInterval overlaps with current interval:
         absorb current interval into newInterval
+
+-#435: Overlapping Intervals
+    Sort intervals by start time
+    For each interval:
+        If the current interval overlaps with the next one:
+            Drop the one that ends later
+        Otherwise move to the next interval
+
+-#202: Happy number
+    Write summary on 1/24/2025
+
+-#198 House Robber
+    Write summary on 1/24/2025
