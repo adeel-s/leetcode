@@ -7,13 +7,14 @@ Summaries of solved LeetCode Problems
     If this never happens, there are no conflicts
 
 -#253: Meeting Rooms II
-    Split the list of intervals into start times and end times
+    Split the list of intervals into a list of start times and a list of end times
     Initialize a start and and end pointer to the beginning of each list
     If the next start time is less than the next end time:
         Another meeting will start before one ends
         Increase the number of concurrent meetings
     Otherwise, a meeting will end before the next one starts:
         Decrease the number of concurrent meetings
+    Return the max number of concurrent meetings
 
 -#56: Merge Intervals
     Sort intervals by start time
@@ -41,8 +42,31 @@ Summaries of solved LeetCode Problems
             Drop the one that ends later
         Otherwise move to the next interval
 
+-#49 Group Anagrams
+    For each string in the list:
+        Create a frequency array for the string
+        Add it to the dictionary, append the word to the value for that array
+    return the values of the dictionary
+
+-#1 Two Sum
+    Store numbers:indices in a dictionary
+    For each number in nums:
+        if its compliment is in the dictionary:
+            return its index and the current index
+
+-#242 Valid Anagram
+    Create frequency arrays for both strings
+    Count letter frequency of s
+    Count letter frequency of t
+    Compare letter frequencies
+
 -#202: Happy number
     Write summary on 1/24/2025
 
 -#198 House Robber
     Write summary on 1/24/2025
+
+-#150 Reverse Polish Notation
+    Write summary on 1/24/2025
+
+
