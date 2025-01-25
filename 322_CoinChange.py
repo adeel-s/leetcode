@@ -40,6 +40,12 @@
     * If I compute solutions to all numbers up to amount,
         when I get to amount, I will know whether each number before it
             has a solution
+    * Brute Force: DFS with backtracking
+        For amount and all subsequent remainders:
+            Try subtracting all possible coins
+                If the difference is negative, stop and eliminate larger coins
+                Update the number of coins
+        This is O(t^n)
     * Proposal:
         create a dictionary with values from 0 to amount
             from 0 to amount:
@@ -68,14 +74,16 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         numCoins = {0:0}
-        print(numCoins.get(amount))
         for i in range(1, amount + 1, 1):
             for num in coins:
                 if num - i == 0:
                     numCoins[i] = 1
                 else:
                     if numCoins.get(i - num):
-                        numCoins[i] = numCoins[i-num] + 1 if not numCoins.get(i) else min(numCoins.get(i), numCoins[i-num] + 1)
+                        if numCoins.get(i):
+                            numCoins[i] = min(numCoins.get(i), numCoins[i-num] + 1)
+                        else:
+                            numCoins[i] = numCoins[i-num] + 1 
         if amount == 0:
             return 0
         return -1 if not numCoins.get(amount) else numCoins[amount]

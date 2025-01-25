@@ -34,19 +34,15 @@
 '''
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        if len(nums) == 1:
-            return nums[0]
+        first = 0
+        second = 0
 
-        values = [0] * len(nums)
-        values[0] = nums[0]
-        values[1] = nums[1]
-
-        for i in range(len(nums) - 2):
-            values[i+2] = max(values[i+2], values[i] + nums[i+2])
-            if i < len(nums) - 3:
-                values[i+3] = max(values[i+3], values[i] + nums[i+3])
-
-        return max(values[len(values) - 1], values[len(values) - 2])
+        for n in nums:
+            current = max(n + first, second)
+            first = second
+            second = current
+        
+        return second
 
 
         
