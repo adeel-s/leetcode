@@ -27,22 +27,24 @@
         result = 1
         Sort position and speed by position
         Calculate ETA for each car
-        if ETA[i] > ETA[i+1]:
+        if ETA[i] > ETA[i-1]:
             result += 1
-    * AT SOME POINT, A CAR TAKES THE ETA OF THE CAR AHEAD OF IT
+        * Remember: when the car in front is slower than the car behind, the car behind takes
+            it's ETA
 '''
 
 class Solution:
     def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
-        result = len(position) - 1
+        result = 1
         ETAs = []
         cars = sorted(zip(position, speed))
         for car in cars:
             ETAs.append((target - car[0])/car[1])
         print(ETAs)
         for i in range(len(ETAs) - 1, 0, -1):
-            if ETAs[i] > ETAs[i-1]:
-                result -= 1
+            if ETAs[i] < ETAs[i-1]:
+                result += 1
+            else: 
                 ETAs[i-1] = ETAs[i]
         return result
 
