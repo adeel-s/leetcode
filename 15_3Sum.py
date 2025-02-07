@@ -14,53 +14,48 @@
 
 -Observations
     * Sort the list
-    * Have three pointers:
-        One left
-        One right
-        One center
-    * Based on the left and right, the center searches for the compliment to make a valid triplet
-    * In the case of doubles, the center pointer will find a double if needed.
-        * Left and right pointers should skip doubles if found
+    * For each element in the list:
+        Perform Two sum II
+        If i == i-1:
+            skip the element
     * Proposal:
-        Sort the list
-        Initialize three pointers: lp, rp, cp to the start, end of the list
-        Binary search for the compliment
-        If found, add to the result list
-
+        nums = sorted nums
+        result = []
+        for i in range(len(nums) - 2):
+            if nums[i] == nums[i+1]:
+                continue
+            lp = i + 1
+            rp = len(nums) - 1
+            while lp < rp:
+                if nums[lp] + nums[rp] + nums[i] == 0:
+                    result.append(nums[i], nums[lp], nums[rp])
+                elif nums[lp] + nums[rp] + nums[i] > 0:
+                    rp -= 1
+                else:
+                    lp += 1
+        return result
 
 '''
-from typing import List
-
-
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        nums = sorted(nums)
-        print(nums)
-        lp, rp = 0, len(nums) - 1
+        nums.sort()
         result = []
-
-        while lp < rp:
-            low = lp + 1
-            high = rp - 1
-            while low <= high:
-                mid = (high + low) // 2
-                if nums[lp] + nums[rp] + nums[mid] == 0:
-                    result.append([lp, mid, rp])
-                elif nums[lp] + nums[rp] + nums[mid] < 0:
-                    low = mid + 1
-                else:
-                    high = mid - 1
-            if nums[lp] + nums[rp] + nums[high] > 0:
-                i = 0
-                while nums[rp-i] == nums[rp]:
-                    rp -= 1
-                    i -=1
-            else:
-                i = 0
-                while nums[lp+i] == nums[lp]:
+        for i in range(len(nums) - 2):
+            if nums[i] == nums[i-1] and i > 0:
+                continue
+            lp = i + 1
+            rp = len(nums) - 1
+            print(i, lp, rp)
+            while lp < rp:
+                if nums[lp] + nums[rp] + nums[i] == 0:
+                    result.append([nums[i], nums[lp], nums[rp]])
                     lp += 1
-                    i +=1
-
+                    while nums[lp] == nums[lp-1] and lp < rp:
+                        lp += 1
+                elif nums[lp] + nums[rp] + nums[i] > 0:
+                    rp -= 1
+                else:
+                    lp += 1
         return result
 
 
