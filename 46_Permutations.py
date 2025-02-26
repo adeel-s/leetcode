@@ -12,14 +12,12 @@
     O(n) space
 
 -Observations
-    * Seems like backtracking but with permutations - so duplicates are fine.
-    * dfs(i) → until i == len(nums)
-    Proposal:
-    backtrack:
-        if len(nums) == 1:
-            return nums[0]
-        For each number in nums:
-            perm.append(backtrack([1:-1]))
+    * Proposal:
+        Base case: nums is empty:
+        permute for every element in nums, recursively
+            return an empty list
+        Otherwise:
+            Insert nums[0] at every index in every permutation in the result list
 
 '''
 class Solution:

@@ -31,26 +31,14 @@
     * This is the problem max subarray, on the excess array
     Proposal:
         create excess array
-        (assume no wrap around)
         look for the max subarray in the excess array
             if the running sum every goes negative:
                 restart
         If the sum of the excess array is greater thanzero, the starting index 
             is the start of the sub array.
 
-        How to deal with a wrap-around subarray:
-            Manually: split nums in half and then flip around the two halves
-                run the algorithm again
 -Solution
-    result = -1
-    excessSum = 0
-    subarray = 0
-    best = 0
-    excess = [g + c for g, c in zip(gas, cost)]
-
-    for i in range(len(excess)):
-        excessSum += excess[i]
-        if subarray + excess[i] < subarray:
+    
 
 
 
